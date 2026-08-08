@@ -1,8 +1,8 @@
 {
   "name": "cloudcheck",
   "displayName": "CloudCheck",
-  "description": "Inline compliance linting for Bicep, Terraform, and ARM templates. Flags naming violations, security misconfigurations, and missing tags as you type.",
-  "version": "0.1.0",
+  "description": "Inline compliance linting for Bicep, Terraform, and ARM templates. AST parser with 38 CIS-mapped rules.",
+  "version": "0.2.0",
   "publisher": "cloudcheck",
   "icon": "icon.png",
   "engines": {
