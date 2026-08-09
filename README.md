@@ -1,8 +1,13 @@
 # CloudCheck
 
-Inline compliance linting for Bicep, Terraform, and ARM templates, directly in VS Code.
+**Inline compliance linting for Bicep, Terraform, and ARM templates. Directly in VS Code.**
 
-CloudCheck flags security misconfigurations, naming violations, and missing governance controls as you write infrastructure code, with no CLI setup, no pipeline required.
+CloudCheck flags security misconfigurations, naming violations, and missing governance controls as you write infrastructure code. No CLI setup. No pipeline required. Just open a `.bicep` or `.tf` file and save.
+
+[![Marketplace](https://img.shields.io/badge/VS%20Code-Marketplace-007ACC)](https://marketplace.visualstudio.com/items?itemName=headspace222-dev.cloudcheck)
+[![License](https://img.shields.io/badge/license-MIT-34D399)](LICENSE.txt)
+
+---
 
 ## What it checks
 
@@ -22,19 +27,53 @@ CloudCheck flags security misconfigurations, naming violations, and missing gove
 | IaC Quality | 4 | Hardcoded secrets, API versions, outputs, parameter descriptions |
 | Terraform | 3 | Remote state, provider pinning, required_version |
 
+---
+
 ## How it works
 
-- Runs automatically on save (configurable).
-- Flags issues as red/yellow squiggles in the editor.
+- Runs automatically on save. Configurable in settings.
+- Flags issues as red and yellow squiggles on the exact problem line
 - Shows all findings in the VS Code Problems panel (`Ctrl+Shift+M`).
-- Status bar shows live issue count.
-- Each diagnostic includes the rule ID, description, and exact remediation.
+- Status bar shows live issue count. Green when clean, red when critical issues exist.
+- Every diagnostic includes the rule ID, description, and exact remediation.
+
+---
 
 ## Supported files
 
-- `.bicep` - Azure Bicep
-- `.tf` - Terraform HCL
-- `.json` - ARM templates (auto-detected by schema).
+- `.bicep` — Azure Bicep.
+- `.tf` — Terraform HCL.
+- `.json` — ARM templates, auto-detected by schema.
+
+---
+
+## Install
+
+Search **CloudCheck** in the VS Code Extensions panel, or install from the command line:
+
+```bash
+code --install-extension headspace222-dev.cloudcheck
+```
+
+---
+
+## Example findings
+
+```
+[CloudCheck STG-001] Public blob access must be disabled (CIS 3.1)
+allowBlobPublicAccess: true exposes storage containers to the public internet.
+Fix: properties: { allowBlobPublicAccess: false }
+
+[CloudCheck NET-001] Wildcard inbound NSG rule detected (CIS 6.1)
+An NSG rule allows all inbound traffic from any source. Critical exposure.
+Fix: Replace sourceAddressPrefix: '*' with a specific CIDR or service tag.
+
+[CloudCheck KV-002] Key Vault purge protection must be enabled (CIS 8.5)
+Purge protection prevents permanent deletion during the retention period.
+Fix: properties: { enablePurgeProtection: true }
+```
+
+---
 
 ## Settings
 
@@ -45,29 +84,35 @@ CloudCheck flags security misconfigurations, naming violations, and missing gove
 | `cloudcheck.lintOnType` | `false` | Run checks as you type |
 | `cloudcheck.severity` | `all` | Minimum severity: `all`, `critical`, `high`, `medium` |
 
+---
+
 ## Commands
-.
-- `CloudCheck: Run Compliance Check` - manual run on active file.
-- `CloudCheck: Show Output Panel` - open the CloudCheck output log.
 
-## Example findings
+- `CloudCheck: Run Compliance Check` — runs a check on the active file.
+- `CloudCheck: Show Output Panel` — opens the CloudCheck output log.
 
-```
-[CloudCheck STG-001] Public blob access must be disabled (CIS 3.1).
-allowBlobPublicAccess: true exposes storage containers to the public internet.
-Fix: properties: { allowBlobPublicAccess: false }.
-
-[CloudCheck NET-001] Wildcard inbound NSG rule detected (CIS 6.1).
-An NSG rule allows all inbound traffic from any source. Critical exposure.
-Fix: Replace sourceAddressPrefix: '*' with a specific CIDR or service tag.
-```
+---
 
 ## Compliance references
 
-- CIS Microsoft Azure Foundations Benchmark.
-- Microsoft Cloud Adoption Framework (CAF) naming conventions.
-- Azure Security Baseline.
+- [CIS Microsoft Azure Foundations Benchmark](https://www.cisecurity.org/benchmark/azure)
+- [Microsoft Cloud Adoption Framework, Naming Conventions](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)
+- [Azure Security Baseline](https://learn.microsoft.com/en-us/security/benchmark/azure/)
+
+---
 
 ## About
 
-Built by Jane Ologhadien. Part of the [Cloud Engineering Toolkit](https://github.com/YOUR_USERNAME/cloud-engineering-toolkit).
+Built by [Jane Ologhadien](https://github.com/headspace222), cloud and infrastructure engineer.
+
+Part of the [Cloud Engineering Toolkit](https://github.com/headspace222/cloud-engineering-toolkit), a free multi-cloud reference for Azure, AWS, and GCP engineers.
+
+---
+
+## Contributing
+
+Found a missing rule or a false positive? [Open an issue](https://github.com/headspace222/cloudcheck/issues). Contributions are welcome.
+
+---
+
+*If CloudCheck has saved you time, a quick [review on the Marketplace](https://marketplace.visualstudio.com/items?itemName=headspace222-dev.cloudcheck&ssr=false#review-details) helps other engineers find it.*
