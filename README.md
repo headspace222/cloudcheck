@@ -41,9 +41,9 @@ CloudCheck flags security misconfigurations, naming violations, and missing gove
 
 ## Supported files
 
-- `.bicep` - Azure Bicep.
-- `.tf` - Terraform HCL.
-- `.json` - ARM templates, auto-detected by schema.
+- `.bicep` — Azure Bicep.
+- `.tf` — Terraform HCL.
+- `.json` — ARM templates, auto-detected by schema.
 
 ---
 
@@ -88,8 +88,8 @@ Fix: properties: { enablePurgeProtection: true }
 
 ## Commands
 
-- `CloudCheck: Run Compliance Check` - runs a check on the active file.
-- `CloudCheck: Show Output Panel` - opens the CloudCheck output log.
+- `CloudCheck: Run Compliance Check` — runs a check on the active file.
+- `CloudCheck: Show Output Panel` — opens the CloudCheck output log.
 
 ---
 
