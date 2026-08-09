@@ -1,0 +1,108 @@
+{
+  "name": "cloudcheck",
+  "displayName": "CloudCheck",
+  "description": "Inline compliance linting for Bicep, Terraform, and ARM templates. 38 rules mapped to CIS Azure Benchmark. Catches naming violations, security misconfigurations, and missing governance controls as you write.",
+  "version": "0.2.1",
+  "publisher": "headspace222-dev",
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Linters",
+    "Other"
+  ],
+  "keywords": [
+    "bicep",
+    "terraform",
+    "arm",
+    "azure",
+    "compliance",
+    "cis",
+    "security",
+    "iac",
+    "linting",
+    "cloud",
+    "azure-benchmark",
+    "caf",
+    "infrastructure-as-code"
+  ],
+  "activationEvents": [
+    "onLanguage:bicep",
+    "onLanguage:terraform",
+    "onLanguage:json",
+    "onLanguage:arm-template"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "cloudcheck.runCheck",
+        "title": "CloudCheck: Run Compliance Check"
+      },
+      {
+        "command": "cloudcheck.showOutput",
+        "title": "CloudCheck: Show Output Panel"
+      }
+    ],
+    "configuration": {
+      "title": "CloudCheck",
+      "properties": {
+        "cloudcheck.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable CloudCheck inline linting."
+        },
+        "cloudcheck.severity": {
+          "type": "string",
+          "default": "all",
+          "enum": [
+            "all",
+            "critical",
+            "high",
+            "medium"
+          ],
+          "description": "Minimum severity level to show diagnostics."
+        },
+        "cloudcheck.lintOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Run compliance checks automatically on file save."
+        },
+        "cloudcheck.lintOnType": {
+          "type": "boolean",
+          "default": false,
+          "description": "Run compliance checks as you type (may affect performance on large files)."
+        }
+      }
+    },
+    "menus": {
+      "editor/context": [
+        {
+          "command": "cloudcheck.runCheck",
+          "when": "resourceExtname == .bicep || resourceExtname == .tf || resourceExtname == .json",
+          "group": "cloudcheck"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "package": "npx vsce package --no-dependencies"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^2.32.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/headspace222/cloudcheck"
+  },
+  "bugs": {
+    "url": "https://github.com/headspace222/cloudcheck/issues"
+  },
+  "homepage": "https://github.com/headspace222/cloudcheck#readme",
+  "author": {
+    "name": "Jane Ologhadien",
+    "url": "https://github.com/headspace222"
+  },
+  "license": "MIT"
+}
