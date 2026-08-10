@@ -1,8 +1,8 @@
 # CloudCheck
 
-**Inline compliance linting for Bicep, Terraform, and ARM templates. Directly in VS Code.**
+Inline compliance linting for Bicep, Terraform, and ARM templates. Directly in VS Code.
 
-CloudCheck flags security misconfigurations, naming violations, and missing governance controls as you write infrastructure code. No CLI setup. No pipeline required. Just open a `.bicep` or `.tf` file and save.
+CloudCheck flags security misconfigurations, naming violations, and missing governance controls as you write infrastructure code. No CLI setup. No pipeline required.
 
 [![Marketplace](https://img.shields.io/badge/VS%20Code-Marketplace-007ACC)](https://marketplace.visualstudio.com/items?itemName=headspace222-dev.cloudcheck)
 [![License](https://img.shields.io/badge/license-MIT-34D399)](LICENSE.txt)
@@ -32,8 +32,8 @@ CloudCheck flags security misconfigurations, naming violations, and missing gove
 ## How it works
 
 - Runs automatically on save. Configurable in settings.
-- Flags issues as red and yellow squiggles on the exact problem line
-- Shows all findings in the VS Code Problems panel (`Ctrl+Shift+M`).
+- Flags issues as red and yellow squiggles on the exact problem line.
+- Shows all findings in the VS Code Problems panel (Ctrl+Shift+M).
 - Status bar shows live issue count. Green when clean, red when critical issues exist.
 - Every diagnostic includes the rule ID, description, and exact remediation.
 
@@ -41,9 +41,9 @@ CloudCheck flags security misconfigurations, naming violations, and missing gove
 
 ## Supported files
 
-- `.bicep` — Azure Bicep.
-- `.tf` — Terraform HCL.
-- `.json` — ARM templates, auto-detected by schema.
+- `.bicep`, Azure Bicep.
+- `.tf`, Terraform HCL.
+- `.json`, ARM templates, auto-detected by schema.
 
 ---
 
@@ -82,14 +82,14 @@ Fix: properties: { enablePurgeProtection: true }
 | `cloudcheck.enable` | `true` | Enable/disable the extension |
 | `cloudcheck.lintOnSave` | `true` | Run checks on file save |
 | `cloudcheck.lintOnType` | `false` | Run checks as you type |
-| `cloudcheck.severity` | `all` | Minimum severity: `all`, `critical`, `high`, `medium` |
+| `cloudcheck.severity` | `all` | Minimum severity: all, critical, high, medium |
 
 ---
 
 ## Commands
 
-- `CloudCheck: Run Compliance Check` — runs a check on the active file.
-- `CloudCheck: Show Output Panel` — opens the CloudCheck output log.
+- `CloudCheck: Run Compliance Check`: runs a check on the active file.
+- `CloudCheck: Show Output Panel`: opens the CloudCheck output log.
 
 ---
 
@@ -104,8 +104,6 @@ Fix: properties: { enablePurgeProtection: true }
 ## About
 
 Built by [Jane Ologhadien](https://github.com/headspace222), cloud and infrastructure engineer.
-
-Part of the [Cloud Engineering Toolkit](https://github.com/headspace222/cloud-engineering-toolkit), a free multi-cloud reference for Azure, AWS, and GCP engineers.
 
 ---
 
