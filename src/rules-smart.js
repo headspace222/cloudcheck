@@ -708,6 +708,22 @@ const SMART_RULES = [
         : { passed: false, line: 1, detail: 'targetScope not declared' };
     }
   },
+  {
+    id: 'BCP-002', cat: 'Bicep', sev: 'LOW',
+    name: 'Subscription-scoped Bicep file missing targetScope declaration',
+    desc: 'Bicep files deploying subscription-level resources must declare targetScope explicitly.',
+    fix: "targetScope = 'subscription'",
+    check(result) {
+      if (result.format !== 'bicep') return null;
+      const subResources = result.resourcesOfType(
+        /Resources.resourceGroups|Authorization.policyAssignments|Blueprint|managementGroups/i
+      );
+      if (!subResources.length) return null;
+      return result.hasTargetScope() ? true
+        : { passed: false, line: 1, detail: 'Subscription-scoped resource found but targetScope not declared' };
+    }
+  },
+
 ];
 
 /**
