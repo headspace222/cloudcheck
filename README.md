@@ -112,5 +112,3 @@ Built by [Jane Ologhadien](https://github.com/headspace222), cloud and infrastru
 Found a missing rule or a false positive? [Open an issue](https://github.com/headspace222/cloudcheck/issues). Contributions are welcome.
 
 ---
-
-*If CloudCheck has saved you time, a quick [review on the Marketplace](https://marketplace.visualstudio.com/items?itemName=headspace222-dev.cloudcheck&ssr=false#review-details) helps other engineers find it.*
