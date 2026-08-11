@@ -2,7 +2,7 @@
   "name": "cloudcheck",
   "displayName": "CloudCheck",
   "description": "Inline compliance linting for Bicep, Terraform, and ARM templates. 38 rules mapped to CIS Azure Benchmark. Catches naming violations, security misconfigurations, and missing governance controls as you write.",
-  "version": "0.2.7",
+  "version": "0.2.9",
   "publisher": "headspace222-dev",
   "icon": "icon.png",
   "engines": {
