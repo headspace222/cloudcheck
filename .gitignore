@@ -1,3 +1,1 @@
-node_modules/
-*.vsix
-.vscode-test/
+*.vsix\nnode_modules/\n.vscode-test/\n*.log
